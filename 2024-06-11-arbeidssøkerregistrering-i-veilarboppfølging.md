@@ -35,7 +35,7 @@ av oppfølgingsperioder. Fordelen er at det antas å være raskere å utvikle.
 Det andre alternativet er å starte å konsumere et topic som nytt-arbeidssøkerregister 
 publiserer meldinger på. Arbeidssøkerperioder og profilering er per i dag publisert på
 separate topics, men vi har bedt om tilgang til å konsumere fra et topic der disse
-opplysningene er sammenstilt. Veilarboppfølging kan så sammenstille informasjonen med
+opplysningene er sammenstilt. [EDIT har fått beskjed om at dette ikke er mulig] Veilarboppfølging kan så sammenstille informasjonen med
 egne opplysninger om oppfølgingsperioder og publisere en rik melding som inneholder
 alle opplysninger veilarbdirigent trenger får å avgjøre om CV-kort skal opprettes.
 
@@ -47,11 +47,23 @@ oppfølging av sykemeldte.
 
 ![Skisse for alternativ 2](/bilder/2024-06-11_2.png)
 
+## Alternativ 3
+Siden informasjon om profilering blir publisert på et annet topic enn nye arbeidssøkerperioder, 
+vil det innebære en del ekstra kompleksitet å sammenstille denne informasjonen i veilarboppfølging,
+og veilarboppfølging har ikke selv behov for profilering.
+I alternativ 3, lar vi veilarbdirigent innhente profileringen via et synkront kall til
+arbeidssøkerregisteret.
+
+![Skisse for alternativ 3](bilder/2024-06-11_3.png)
+
 ### Avgjørelse
-Vi beslutter å implementere alternativ 2. Alternativ 2 antas å ta noe mer tid å
+Vi beslutter å implementere alternativ 3. Alternativ 3 antas å ta noe mer tid å
 implementere, men er mer framtidsrettet. Konsumering av nytt topic fra 
 nytt-arbeidssøkerregister må uansett gjøres når Arena stenges ned. Ved å lytte på
 det topic-et nå, løser vi problemet med forsinket oppstart av arbeidsoppfølging.
+Siden veilarbdirigent uansett trenger mer informasjon enn det som er tilgjengelig på
+arbeidssøkerperiode-topicet, lar vi veilarbdirigent håndtere den ekstra kompleksiteten
+det er å sammenstille arbeidssøkerperiode med profilering.
 
 ### Betraktninger
 Det er designmessig uhelding at vi drar inn elementer fra arbeidssøkerregisteret og 
